@@ -1,7 +1,5 @@
 
     const {app, BrowserWindow} = require('electron')
-    const url = require("url");
-    const path = require("path");
 
     let mainWindow
 
@@ -11,9 +9,10 @@
         height: 900,
         webPreferences: {
           nodeIntegration: true
-        },
-        autoHideMenuBar: true
+        }
       })
+
+      mainWindow.setMenuBarVisibility(false)
 
       mainWindow.loadFile('dist/download-manga-electron/index.html')
 
