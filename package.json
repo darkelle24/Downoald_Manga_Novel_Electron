@@ -1,10 +1,10 @@
 {
   "name": "download-manga-electron",
   "version": "0.0.0",
-  "main": "electron.prod.js",
+  "main": "./src/electron.prod.js",
   "scripts": {
-    "electron:prod": "electron ./electron.prod.js",
-    "electron:dev": "wait-on http://localhost:4200 && electron ./electron.dev.js",
+    "electron:prod": "electron ./src/electron.prod.js",
+    "electron:dev": "wait-on http://localhost:4200 && electron ./src/electron.dev.js",
     "clean": "rimraf dist",
     "ng": "ng",
 
@@ -25,7 +25,7 @@
     "appId": "download-manga",
     "productName": "Download Manga",
     "files": [
-      "electron.prod.js",
+      "./src/electron.prod.js",
       "dist/download-manga-electron"
     ]
   },

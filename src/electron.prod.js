@@ -11,7 +11,8 @@
         height: 900,
         webPreferences: {
           nodeIntegration: true
-        }
+        },
+        autoHideMenuBar: true
       })
 
       mainWindow.loadFile('dist/download-manga-electron/index.html')
