@@ -1,0 +1,143 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-chapters',
+  templateUrl: './chapters.component.html',
+  styleUrls: ['./chapters.component.scss']
+})
+export class ChaptersComponent implements OnInit {
+
+  pages: any[] = [
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+
+    {
+      lol: "lol"
+    },{
+      lol: "lol"
+    },
+
+    {
+      lol: "lol"
+    },
+
+
+
+
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+    {
+      lol: "lol"
+    },
+  ]
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}

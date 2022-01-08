@@ -1,0 +1,17 @@
+<mat-accordion>
+  <div style="height: 3px;"></div>
+  <ng-container *ngFor="let page of pages">
+    <mat-expansion-panel style="margin-left: 5px">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Self aware panel
+        </mat-panel-title>
+        <mat-panel-description>
+          <app-chapter-header></app-chapter-header>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-chapter-contents></app-chapter-contents>
+    </mat-expansion-panel>
+  </ng-container>
+  <div style="height: 3px;"></div>
+</mat-accordion>

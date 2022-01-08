@@ -1,0 +1,31 @@
+<div class="page">
+
+    <h2 style="text-align: center;">Download Manga</h2>
+    <div class="search" style="width: 100%;">
+
+      <mat-form-field appearance="fill" style="flex: 1">
+        <mat-label>Url Manga</mat-label>
+        <input matInput type="url" [(ngModel)]="url" placeholder="https://example.com" #urlInput="ngModel" name="urlInput" pattern="[-a-zA-Z0-9@:%_+.~#?&//=]{2,256}(.[a-z]{2,4})?\b(/[-a-zA-Z0-9@:%_+.~#?&//=]*)?  ">
+        <button *ngIf="url" matSuffix mat-icon-button aria-label="Clear" (click)="url=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="checkUrlInput(urlInput)" class="alert">Wrong URL.</mat-error>
+      </mat-form-field>
+
+      <div class="valid-button search">
+        <button mat-raised-button style="height: 100%;">Valid</button>
+        <button mat-icon-button style="height: 100%;width: 52.06px"><mat-icon>settings</mat-icon></button>
+      </div>
+
+    </div>
+
+    <div style="height: 0.5em;width: 100%;"></div>
+
+    <mat-progress-bar value="40" style="height: 40px!important;border-radius: 10px !important;"></mat-progress-bar>
+
+    <div style="overflow: auto; flex: 1; margin-top: calc(1.34375em + 0.5em);">
+      <app-chapters></app-chapters>
+    </div>
+
+</div>
+
