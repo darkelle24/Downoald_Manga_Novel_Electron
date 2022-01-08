@@ -10,6 +10,10 @@ export class DownloadOneMangaComponent implements OnInit {
 
   url = ''
 
+  parametersOpen: boolean = false
+
+  file: any
+
   constructor() { }
 
   ngOnInit(): void {
@@ -20,6 +24,15 @@ export class DownloadOneMangaComponent implements OnInit {
       return true
     }
     return false
+  }
+
+  openParameter() {
+    this.parametersOpen = !this.parametersOpen
+  }
+
+  handleFileInput(event: any) {
+    if (event.target.files && event.target.files.length !== 0)
+      this.file = event.target.files
   }
 
 }

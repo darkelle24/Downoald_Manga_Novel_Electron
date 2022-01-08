@@ -2,3 +2,15 @@
   width: 100%;
   height: 100%;
 }
+
+.progress-bar {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+@media screen and (max-height: 630px) {
+  .progress-bar {
+    height: 10px;
+  }
+}

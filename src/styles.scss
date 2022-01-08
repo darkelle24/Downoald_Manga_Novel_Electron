@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100vh; overflow: hidden }
+html { height: 100vh }
+
+@media screen and (max-height: 630px) {
+  html { min-height: 630px; }
+}
+
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

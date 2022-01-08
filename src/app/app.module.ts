@@ -13,7 +13,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatBadgeModule } from '@angular/material/badge';
 import {MatIconModule} from '@angular/material/icon';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatCardModule} from '@angular/material/card';
 
 import { DownloadOneMangaComponent } from './download-one-manga/download-one-manga.component';
 import { ChaptersComponent } from './download-one-manga/chapters/chapters.component';
@@ -41,7 +43,9 @@ import { ChapterContentsComponent } from './download-one-manga/chapters/chapter-
     MatExpansionModule,
     MatBadgeModule,
     MatIconModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatTooltipModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
