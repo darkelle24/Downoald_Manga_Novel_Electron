@@ -35,12 +35,12 @@
         <mat-slide-toggle>Slide me!</mat-slide-toggle>
         <div style="display: flex; align-items: baseline; width: 100%;">
           <div style="height: (100% + 2px);">
-            <button style="height: 100%;" mat-raised-button (click)="fileUpload.click()" alt="Change l'image"><mat-icon style="font-size: 30px" [inline]="true">file_upload</mat-icon>Charger un fichier</button>
-            <input #fileUpload type="file" id="fileUpload" (change)="handleFileInput($event)" style="display:none;" />
+            <button style="height: 100%;" matTooltip="Select folder" mat-raised-button (click)="fileUpload.click()" alt="Change l'image"><mat-icon style="font-size: 30px" [inline]="true">file_upload</mat-icon>Select folder</button>
+            <input #fileUpload type="file" webkitdirectory directory id="fileUpload" (change)="handleFileInput($event)" style="display:none;" />
           </div>
           <div class="box-file" style="width: 100%; padding-left: 1rem!important; margin-left: 1rem!important;">
-            <span style="display: table-cell;width: 100%;overflow: hidden;">{{file ? file.name : 'Aucun fichier' }}</span>
-            <button matTooltip="Enlever ce fichier" (click)="file = undefined" style="display: table-cell" mat-icon-button>
+            <span style="display: table-cell;width: 100%;overflow: hidden;">{{folderName && folderName != '' ? folderName : 'No folder' }}</span>
+            <button matTooltip="Deselect folder" (click)="files = undefined; folderName = ''" style="display: table-cell" mat-icon-button>
               <mat-icon >close</mat-icon>
             </button>
           </div>

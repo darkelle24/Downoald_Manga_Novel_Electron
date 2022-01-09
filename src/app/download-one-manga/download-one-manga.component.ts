@@ -12,7 +12,8 @@ export class DownloadOneMangaComponent implements OnInit {
 
   parametersOpen: boolean = false
 
-  file: any
+  folderName: string = ''
+  files: any = undefined
 
   constructor() { }
 
@@ -31,8 +32,23 @@ export class DownloadOneMangaComponent implements OnInit {
   }
 
   handleFileInput(event: any) {
-    if (event.target.files && event.target.files.length !== 0)
-      this.file = event.target.files
+    if (event.target.files && event.target.files.length !== 0) {
+      this.files = event.target.files
+      this.getFolderName()
+    }
+  }
+
+  getFolderName() {
+    if (this.files) {
+      for (var i = 0; i < this.files.length; ++i) {
+        if (!(this.files[i].webkitRelativePath.split('\\').length > 2)) {
+          let splited = this.files[i].path.split('\\')
+          splited.pop()
+          this.folderName = splited.join('/')
+          return
+        }
+      }
+    }
   }
 
 }
