@@ -1,3 +1,4 @@
+import { ElectronCommuniquateService } from './../_helper/electron-communiquate.service';
 import { Component, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
 
@@ -15,7 +16,7 @@ export class DownloadOneMangaComponent implements OnInit {
   folderName: string = ''
   files: any = undefined
 
-  constructor() { }
+  constructor(private electron: ElectronCommuniquateService) { }
 
   ngOnInit(): void {
   }
@@ -51,4 +52,7 @@ export class DownloadOneMangaComponent implements OnInit {
     }
   }
 
+  checkManga() {
+    this.electron.getInfoManga(this.url)
+  }
 }

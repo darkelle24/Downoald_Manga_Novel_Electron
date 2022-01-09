@@ -1,33 +1,28 @@
+const {app, BrowserWindow} = require('electron')
 
-    const {app, BrowserWindow} = require('electron')
+let mainWindow
 
-    let mainWindow
-
-    function createWindow () {
-      mainWindow = new BrowserWindow({
-        width: 1000,
-        height: 900,
-        webPreferences: {
-          nodeIntegration: true
-        }
-      })
-
-      mainWindow.setMenuBarVisibility(false)
-
-      mainWindow.loadFile('dist/download-manga-electron/index.html')
-
-      mainWindow.on('closed', function () {
-        mainWindow = null
-      })
+function createWindow () {
+  mainWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      nodeIntegration: true
     }
+  })
+  mainWindow.loadFile('dist/download-manga-electron/index.html')
+  mainWindow.on('closed', function () {
+    mainWindow = null
+  })
+}
 
-    app.on('ready', createWindow)
+app.on('ready', createWindow)
 
-    app.on('window-all-closed', function () {
-      if (process.platform !== 'darwin') app.quit()
-    })
+app.on('window-all-closed', function () {
+  if (process.platform !== 'darwin') app.quit()
+})
 
-    app.on('activate', function () {
-      if (mainWindow === null) createWindow()
-    })
+app.on('activate', function () {
+  if (mainWindow === null) createWindow()
+})
 

@@ -20,6 +20,7 @@
     "productName": "Download Manga",
     "files": [
       "./src/electron.prod.js",
+      "back/",
       "dist/download-manga-electron"
     ]
   },
