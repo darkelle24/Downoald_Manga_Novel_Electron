@@ -1,3 +1,4 @@
+const back = require('../back/back.ts')
 const {app, BrowserWindow} = require('electron')
 
 let mainWindow
@@ -7,13 +8,16 @@ function createWindow () {
     width: 800,
     height: 600,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      contextIsolation: false
     }
   })
   mainWindow.loadFile('dist/download-manga-electron/index.html')
   mainWindow.on('closed', function () {
     mainWindow = null
   })
+
+  back.startBack()
 }
 
 app.on('ready', createWindow)

@@ -1,7 +1,13 @@
 const { ipcMain } = require('electron')
 
-ipcMain.on('startCheck', (event, arg) => {
-  console.log(arg.url)
+function startBack() {
+  ipcMain.on('startCheck', (event, arg) => {
+    console.log(arg.url)
+    console.log('ok')
 
-  event.reply('startCheckResponse', 'pong')
-})
+    event.reply('startCheckResponse', 'pong')
+  })
+}
+
+
+module.exports.startBack = startBack

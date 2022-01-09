@@ -6,24 +6,26 @@ import { IpcRenderer } from 'electron';
 })
 export class ElectronCommuniquateService {
 
-  private ipc!: IpcRenderer;
+  private _ipc: IpcRenderer | undefined;
 
   constructor() {
-    if ((<any>window).require) {
+    if (window.require) {
       try {
-        this.ipc = (<any>window).require('electron').ipcRenderer;
+        this._ipc = window.require('electron').ipcRenderer;
       } catch (e) {
         throw e;
       }
     } else {
-      console.warn('App not running inside Electron!');
+      console.warn('Electron\'s IPC was not loaded');
     }
   }
 
   getInfoManga(url: string) {
-    this.ipc.send('startCheck', {url: url})
-    this.ipc.on('startCheckResponse', (event, arg) => {
-      console.log(arg) // prints "pong"
-    })
+    if (this._ipc) {
+      this._ipc.send('startCheck', {url: url})
+      this._ipc.on('startCheckResponse', (event, arg) => {
+        console.log(arg) // prints "pong"
+      })
+    }
   }
 }
