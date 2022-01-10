@@ -12,6 +12,10 @@ export class ElectronCommuniquateService {
     if (window.require) {
       try {
         this._ipc = window.require('electron').ipcRenderer;
+
+        this._ipc.on("consoleLog", (event, arg) => {
+          console.log("Back: " + arg) // prints "pong"
+        })
       } catch (e) {
         throw e;
       }
@@ -23,9 +27,10 @@ export class ElectronCommuniquateService {
   getInfoManga(url: string) {
     if (this._ipc) {
       this._ipc.send('startCheck', {url: url})
-      this._ipc.on('startCheckResponse', (event, arg) => {
+      this._ipc.once('startCheckResponse', (event, arg) => {
         console.log(arg) // prints "pong"
       })
+
     }
   }
 }

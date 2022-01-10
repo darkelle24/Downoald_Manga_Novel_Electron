@@ -3,9 +3,10 @@
     "node_modules"
   ],
   "watch": [
-    "src/electron.dev.js",
-    "back/"
+    "back/",
+    "nodemon.json",
+    "package.json"
   ],
-  "exec": "electron ./src/electron.dev.js",
+  "exec": "npx tsc --project ./back/tsconfig.electron.dev.json && electron ./dist/electron/dev/electron.dev.js",
   "ext": "ts, js, json"
 }
