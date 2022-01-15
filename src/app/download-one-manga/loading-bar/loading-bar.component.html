@@ -1,0 +1,6 @@
+<div class="wrapper">
+  <span class="text" [ngStyle]="{'color: red': electron.mode === 'ERRORCHROME'}">
+    Status: {{sub | async}}
+  </span>
+  <mat-progress-bar [value]="pourcentage" class="progress-bar" ></mat-progress-bar>
+</div>

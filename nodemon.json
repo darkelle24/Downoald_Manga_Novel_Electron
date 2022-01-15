@@ -7,6 +7,6 @@
     "nodemon.json",
     "package.json"
   ],
-  "exec": "npx tsc --project ./back/tsconfig.electron.dev.json && electron ./dist/electron/dev/electron.dev.js",
+  "exec": "npx tsc --project ./back/tsconfig.electron.dev.json && electron ./dist/electron/dev/back/electron.dev.js",
   "ext": "ts, js, json"
 }

@@ -1,56 +1,20 @@
 <div class="page">
 
     <h2 style="text-align: center;">Download Manga</h2>
-    <div class="search" style="width: 100%;">
 
-      <mat-form-field appearance="fill" style="flex: 1">
-        <mat-label>Url Manga</mat-label>
-        <input matInput type="url" [(ngModel)]="url" placeholder="https://example.com" #urlInput="ngModel" name="urlInput" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)">
-        <button *ngIf="url" matSuffix mat-icon-button aria-label="Clear" (click)="url=''" matTooltip="Reset URL">
-          <mat-icon>close</mat-icon>
-        </button>
-        <mat-error *ngIf="checkUrlInput(urlInput)" class="alert">Wrong URL.</mat-error>
-      </mat-form-field>
-
-      <div class="valid-button search">
-        <button mat-raised-button style="height: 100%;" (click)="checkManga()">Valid</button>
-        <button mat-icon-button style="height: 100%;width: 52.06px" matTooltip="Open/Close parameter" (click)="openParameter()"><mat-icon>settings</mat-icon></button>
-      </div>
-
-    </div>
+    <app-url-bar (parametersOpenEvent)="openParameter()" (supportedSiteOpenEvent)="openSupportedSite()"></app-url-bar>
 
     <div style="height: 0.5em;width: 100%;"></div>
 
-    <mat-card class="parameters" *ngIf="parametersOpen">
-      <mat-card-title style="display: flex; flex-direction: row;flex-wrap: nowrap;align-items: center;justify-content: space-between;">
-          <span>Parameters</span>
-          <button mat-icon-button class="close-button" matTooltip="Close parameter" (click)="openParameter()">
-            <mat-icon class="close-icon" color="warn">close</mat-icon>
-          </button>
-      </mat-card-title>
-      <mat-card-subtitle></mat-card-subtitle>
-      <mat-card-content style="display: flex; flex-direction: column;flex-wrap: nowrap;gap: 8px">
-        <mat-slide-toggle>Slide me!</mat-slide-toggle>
-        <mat-slide-toggle>Slide me!</mat-slide-toggle>
-        <mat-slide-toggle>Slide me!</mat-slide-toggle>
-        <div style="display: flex; align-items: baseline; width: 100%;">
-          <div style="height: (100% + 2px);">
-            <button style="height: 100%;" matTooltip="Select folder" mat-raised-button (click)="fileUpload.click()" alt="Change l'image"><mat-icon style="font-size: 30px" [inline]="true">file_upload</mat-icon>Select folder</button>
-            <input #fileUpload type="file" webkitdirectory directory id="fileUpload" (change)="handleFileInput($event)" style="display:none;" />
-          </div>
-          <div class="box-file" style="width: 100%; padding-left: 1rem!important; margin-left: 1rem!important;">
-            <span style="display: table-cell;width: 100%;overflow: hidden;">{{folderName && folderName != '' ? folderName : 'No folder' }}</span>
-            <button matTooltip="Deselect folder" (click)="files = undefined; folderName = ''" style="display: table-cell" mat-icon-button>
-              <mat-icon >close</mat-icon>
-            </button>
-          </div>
-        </div>
-      </mat-card-content>
-    </mat-card>
+    <app-supported-site *ngIf="supportedSiteOpen" (supportedSiteOpenEvent)="openSupportedSite()"></app-supported-site>
+
+    <div *ngIf="supportedSiteOpen" style="height: calc(1.34375em + 0.5em);width: 100%;"></div>
+
+    <app-parameters *ngIf="parametersOpen" (parametersOpenEvent)="openParameter()"></app-parameters>
 
     <div *ngIf="parametersOpen" style="height: calc(1.34375em + 0.5em);width: 100%;"></div>
 
-    <mat-progress-bar value="40" class="progress-bar"></mat-progress-bar>
+    <app-loading-bar></app-loading-bar>
 
     <div class="download-page">
       <app-chapters></app-chapters>

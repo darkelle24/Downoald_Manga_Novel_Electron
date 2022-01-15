@@ -1,0 +1,26 @@
+<mat-card class="parameters">
+  <mat-card-title style="display: flex; flex-direction: row;flex-wrap: nowrap;align-items: center;justify-content: space-between;">
+      <span class="title">Parameters</span>
+      <button mat-icon-button class="close-button" matTooltip="Close parameter" (click)="openParameter()">
+        <mat-icon class="close-icon" color="warn">close</mat-icon>
+      </button>
+  </mat-card-title>
+  <mat-card-subtitle></mat-card-subtitle>
+  <mat-card-content style="display: flex; flex-direction: column;flex-wrap: nowrap;gap: 8px">
+    <mat-slide-toggle>Slide mes!</mat-slide-toggle>
+    <mat-slide-toggle>Slide me!</mat-slide-toggle>
+    <mat-slide-toggle>Slide me!</mat-slide-toggle>
+    <div style="display: flex; align-items: baseline; width: 100%;">
+      <div style="height: (100% + 2px);">
+        <button style="height: 100%;" matTooltip="Select folder" mat-raised-button (click)="fileUpload.click()" alt="Change l'image"><mat-icon style="font-size: 30px" [inline]="true">file_upload</mat-icon>Select folder</button>
+        <input #fileUpload type="file" webkitdirectory directory id="fileUpload" (change)="handleFileInput($event)" style="display:none;" />
+      </div>
+      <div class="box-file" style="width: 100%; padding-left: 1rem!important; margin-left: 1rem!important;">
+        <span style="display: table-cell;width: 100%;overflow: hidden;">{{folderName && folderName != '' ? folderName : 'No folder' }}</span>
+        <button matTooltip="Deselect folder" (click)="files = undefined; folderName = ''" style="display: table-cell" mat-icon-button>
+          <mat-icon >close</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

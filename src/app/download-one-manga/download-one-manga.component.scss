@@ -1,15 +1,3 @@
-.valid-button {
-  height: calc(100% - 1.34375em);
-}
-
-.search {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  gap: 10px;
-  align-items: flex-start;
-}
-
 .page {
   margin-top: 20px;
   margin-left: 50px;
@@ -19,35 +7,14 @@
   flex-direction: column;
 }
 
-.parameters {
-  background-color: gainsboro;
-}
-
-.box-file {
-  display: inline-table;
-  background-color: lightgrey;
-  border-radius: 4px;
-  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-}
-
 .download-page {
   overflow: auto;
   flex: 1;
   margin-top: calc(1.34375em + 0.5em);
 }
 
-.progress-bar {
-  height: 40px!important;
-  border-radius: 10px !important;
-}
-
 @media screen and (max-height: 630px) {
   .page {
     height: calc(630px - 40px)
-  }
-
-  .progress-bar {
-    height: 10px!important;
-    border-radius: 10px !important;
   }
 }

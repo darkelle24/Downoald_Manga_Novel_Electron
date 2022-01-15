@@ -1,36 +1,64 @@
+import { consoleLog } from '../func/consoleLog'
 import { ipcMain } from 'electron'
 import puppeteer from 'puppeteer-core'
+import findChrome from 'chrome-finder'
+import SiteManga from "../../models/siteModels"
 
+async function openChrome(win: Electron.BrowserWindow, event?: Electron.IpcMainEvent, newPath?: string): Promise<puppeteer.Browser | undefined> {
+  let chromePath = ''
+  let browser: puppeteer.Browser
 
-function consoleLog(win: Electron.BrowserWindow, message: any) {
-  console.log(message)
-  win.webContents.send('consoleLog', message)
+  win.webContents.send("tryOpenChrome")
+
+  try {
+    if (!newPath)
+      chromePath = findChrome();
+    else
+      chromePath = newPath
+    browser = await puppeteer.launch({ executablePath: chromePath });
+    consoleLog(win, "Start puppeteer")
+    if (event)
+      event.reply("startChrome")
+    else
+      win.webContents.send("startChrome")
+    return browser
+  } catch (e) {
+    consoleLog(win, e)
+    if (event)
+      event.reply("errorFindChrome")
+    else
+      win.webContents.send("errorFindChrome")
+    return undefined
+  }
 }
 
-export function startBack(win: Electron.BrowserWindow) {
+export function startBack(win: Electron.BrowserWindow, sites: SiteManga[]) {
+  let browser: puppeteer.Browser | undefined = undefined
 
-  let exPath = "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+  consoleLog(win, "Start")
 
-  ipcMain.on('startCheck', (event, arg) => {
-    consoleLog(win, "ok")
+  ipcMain.on('tryToOpenChrome', (event, arg: any[]) => {
+    consoleLog(win, "Start Chrome")
+    if (browser) {
+      browser.close()
+      browser = undefined
+    }
 
+    win.webContents.send("supportedSite", sites.map((site: SiteManga) => { return { domaine: site.domaine, name: site.name }}))
 
-    const vgmUrl = 'https://www.vgmusic.com/music/console/nintendo/nes';
+    if (arg !== undefined && arg.length !== 0 && arg[0] !== '')
+      openChrome(win, event, arg[0]).then((result: any) => {
+        browser = result
+      })
+    else {
+      openChrome(win, event).then((result: any) => {
+        browser = result
+      })
+    }
+  })
 
-    (async () => {
-      consoleLog(win, "start")
-      const browser = await puppeteer.launch({executablePath: exPath});
-      consoleLog(win, "launch")
-      const page = await browser.newPage();
-      consoleLog(win, "load new page")
+  win.webContents.send("start")
 
-      await page.goto(vgmUrl);
-
-      consoleLog(win, vgmUrl)
-
-      event.reply('startCheckResponse', "ok")
-      await browser.close();
-    })();
-
+  ipcMain.on('startCheck', (event, arg: any[]) => {
   })
 }

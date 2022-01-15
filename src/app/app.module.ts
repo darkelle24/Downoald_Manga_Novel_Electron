@@ -15,12 +15,17 @@ import { MatBadgeModule } from '@angular/material/badge';
 import {MatIconModule} from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { DownloadOneMangaComponent } from './download-one-manga/download-one-manga.component';
 import { ChaptersComponent } from './download-one-manga/chapters/chapters.component';
 import { ChapterHeaderComponent } from './download-one-manga/chapters/chapter-header/chapter-header.component';
 import { ChapterContentsComponent } from './download-one-manga/chapters/chapter-contents/chapter-contents.component';
+import { LoadingBarComponent } from './download-one-manga/loading-bar/loading-bar.component';
+import { UrlBarComponent } from './download-one-manga/url-bar/url-bar.component';
+import { SupportedSiteComponent } from './download-one-manga/supported-site/supported-site.component';
+import { ParametersComponent } from './download-one-manga/parameters/parameters.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,11 @@ import { ChapterContentsComponent } from './download-one-manga/chapters/chapter-
     DownloadOneMangaComponent,
     ChaptersComponent,
     ChapterHeaderComponent,
-    ChapterContentsComponent
+    ChapterContentsComponent,
+    LoadingBarComponent,
+    UrlBarComponent,
+    SupportedSiteComponent,
+    ParametersComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +54,8 @@ import { ChapterContentsComponent } from './download-one-manga/chapters/chapter-
     MatIconModule,
     MatSlideToggleModule,
     MatTooltipModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

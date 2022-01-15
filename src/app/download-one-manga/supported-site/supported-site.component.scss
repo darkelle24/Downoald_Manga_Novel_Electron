@@ -1,0 +1,9 @@
+.parameters {
+  background-color: gainsboro;
+}
+
+@media screen and (max-height: 630px) {
+  .title {
+    font-size: 18px;
+  }
+}

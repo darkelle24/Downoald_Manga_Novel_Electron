@@ -1,0 +1,22 @@
+.progress-bar {
+  height: 15px!important;
+  border-radius: 10px !important;
+}
+
+.text {
+  align-self: center;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+@media screen and (max-height: 630px) {
+  .progress-bar {
+    height: 5px!important;
+  }
+}

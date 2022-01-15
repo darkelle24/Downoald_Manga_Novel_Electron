@@ -1,19 +1,17 @@
 {
   "name": "download-manga-electron",
   "version": "0.0.0",
-  "main": "./dist/electron/prod/electron.prod.js",
+  "main": "./dist/electron/prod/back/electron.prod.js",
   "scripts": {
     "tsc:electron:prod": "npx tsc --project ./back/tsconfig.electron.prod.json",
-    "electron:prod": "npm run tsc:electron:prod && electron ./dist/electron/prod/electron.prod.js",
-    "electron:dev": "wait-on http://localhost:4200 && nodemon",
-    "clean": "rimraf dist",
+    "electron:prod": "npm run tsc:electron:prod && npx electron ./dist/electron/prod/back/electron.prod.js",
+    "electron:dev": "npx wait-on http://localhost:4200 && npx nodemon",
+    "clean": "npx rimraf dist",
     "ng": "ng",
     "start": "ng serve",
     "start:electron": "npm run clean && concurrently -k \"ng serve\" \"npm run electron:dev\"",
-    "build": "ng build",
-    "build:electron": "npm run clean && ng build --base-href ./ && electron:prod",
     "watch": "ng build --watch --configuration development",
-    "release": "npm run clean && ng build --base-href ./ --configuration production && npm run tsc:electron:prod && electron-builder",
+    "release": "npm run clean && ng build --base-href ./ --configuration production && npm run tsc:electron:prod && npx electron-builder",
     "test": "ng test"
   },
   "build": {
@@ -37,6 +35,7 @@
     "@angular/platform-browser-dynamic": "~13.1.0",
     "@angular/router": "~13.1.0",
     "puppeteer-core": "^13.0.1",
+    "chrome-finder": "^1.0.7",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

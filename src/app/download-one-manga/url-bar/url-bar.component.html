@@ -1,0 +1,21 @@
+<div class="search" style="width: 100%;height: 100%;">
+
+  <mat-form-field appearance="fill" style="flex: 1">
+    <mat-label>Url Manga</mat-label>
+    <input [disabled]="electron.mode !== 'WAITURL'" matInput type="url" [(ngModel)]="url" placeholder="https://example.com" #urlInput="ngModel" name="urlInput" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)">
+    <button [disabled]="electron.mode !== 'WAITURL'" *ngIf="url" matSuffix mat-icon-button aria-label="Clear" (click)="url=''" matTooltip="Reset URL">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-error *ngIf="checkUrlInput(urlInput)" class="alert">Wrong URL.</mat-error>
+  </mat-form-field>
+
+  <div class="valid-button search">
+    <button mat-raised-button style="height: 100%;" [disabled]="url === '' || checkUrlInput(urlInput)" (click)="checkManga()" *ngIf="electron.mode === 'WAITURL'">Valid</button>
+    <button mat-raised-button style="height: 100%;" (click)="checkManga()" *ngIf="electron.mode === 'DOWNLOAD'">Cancel</button>
+    <mat-spinner diameter="50" *ngIf="electron.mode === 'LOADCHROME' || electron.mode === 'LOADURL'"></mat-spinner>
+
+    <button mat-raised-button style="height: 100%" matTooltip="Open/Close view supported site" (click)="openSupportedSite()">Supported site</button>
+    <button mat-icon-button style="height: 100%;width: 52.06px" matTooltip="Open/Close parameter" (click)="openParameter()"><mat-icon>settings</mat-icon></button>
+  </div>
+
+</div>

@@ -100,6 +100,10 @@
   },
   "include": [
     "./src/",
-    "./electron.dev.ts"
+    "./electron.dev.ts",
+    "./starter.ts",
+    "./func/",
+    "../models/siteModels.ts",
+    "./site/"
   ]
 }
