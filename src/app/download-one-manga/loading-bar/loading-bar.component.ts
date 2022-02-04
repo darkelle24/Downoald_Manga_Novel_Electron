@@ -36,6 +36,10 @@ export class LoadingBarComponent implements OnInit {
       } else if (value === ModeEnum.DOWNLOAD) {
         toReturn = "Download"
 
+      } else if (value === ModeEnum.READYTODOWNLOAD) {
+        toReturn = "Ready to download manga"
+        this.pourcentage = 0
+
       }
       return toReturn
     }))

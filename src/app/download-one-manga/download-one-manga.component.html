@@ -2,17 +2,17 @@
 
     <h2 style="text-align: center;">Download Manga</h2>
 
-    <app-url-bar (parametersOpenEvent)="openParameter()" (supportedSiteOpenEvent)="openSupportedSite()"></app-url-bar>
+    <app-url-bar (infoMangaOpenEvent)="openInfoManga()" (parametersOpenEvent)="openParameter()" (supportedSiteOpenEvent)="openSupportedSite()"></app-url-bar>
 
     <div style="height: 0.5em;width: 100%;"></div>
 
     <app-supported-site *ngIf="supportedSiteOpen" (supportedSiteOpenEvent)="openSupportedSite()"></app-supported-site>
 
-    <div *ngIf="supportedSiteOpen" style="height: calc(1.34375em + 0.5em);width: 100%;"></div>
-
     <app-parameters *ngIf="parametersOpen" (parametersOpenEvent)="openParameter()"></app-parameters>
 
-    <div *ngIf="parametersOpen" style="height: calc(1.34375em + 0.5em);width: 100%;"></div>
+    <app-info-manga *ngIf="infoManga" (infoManga)="openInfoManga()"></app-info-manga>
+
+    <div *ngIf="parametersOpen || supportedSiteOpen || infoManga" style="height: calc(1.34375em + 0.5em);width: 100%;"></div>
 
     <app-loading-bar></app-loading-bar>
 

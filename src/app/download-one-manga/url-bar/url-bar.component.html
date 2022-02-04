@@ -2,19 +2,26 @@
 
   <mat-form-field appearance="fill" style="flex: 1">
     <mat-label>Url Manga</mat-label>
-    <input [disabled]="electron.mode !== 'WAITURL'" matInput type="url" [(ngModel)]="url" placeholder="https://example.com" #urlInput="ngModel" name="urlInput" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)">
+    <input [disabled]="electron.mode !== 'WAITURL'" [URLValidator]="electron.supportedSites" matInput type="url" [(ngModel)]="url" placeholder="https://example.com" #urlInput="ngModel" name="urlInput" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)">
     <button [disabled]="electron.mode !== 'WAITURL'" *ngIf="url" matSuffix mat-icon-button aria-label="Clear" (click)="url=''" matTooltip="Reset URL">
       <mat-icon>close</mat-icon>
     </button>
     <mat-error *ngIf="checkUrlInput(urlInput)" class="alert">Wrong URL.</mat-error>
+    <mat-error *ngIf="checkUrlValidator(urlInput)" class="alert">This web site is not supported.</mat-error>
   </mat-form-field>
 
   <div class="valid-button search">
-    <button mat-raised-button style="height: 100%;" [disabled]="url === '' || checkUrlInput(urlInput)" (click)="checkManga()" *ngIf="electron.mode === 'WAITURL'">Valid</button>
+    <button mat-raised-button style="height: 100%;" [disabled]="url === '' || checkUrlInput(urlInput) || checkUrlValidator(urlInput)" (click)="checkManga()" *ngIf="electron.mode === 'WAITURL'">Valid</button>
+
     <button mat-raised-button style="height: 100%;" (click)="checkManga()" *ngIf="electron.mode === 'DOWNLOAD'">Cancel</button>
+
+    <button mat-raised-button style="height: 100%;" (click)="download()" *ngIf="electron.mode === 'READYTODOWNLOAD'">Download</button>
+    <button mat-raised-button style="height: 100%;" (click)="cancelLoad()" *ngIf="electron.mode === 'READYTODOWNLOAD'">Cancel</button>
+    <button mat-raised-button style="height: 100%;" (click)="openInfoManga()" *ngIf="electron.mode === 'READYTODOWNLOAD'">Info Manga</button>
+
     <mat-spinner diameter="50" *ngIf="electron.mode === 'LOADCHROME' || electron.mode === 'LOADURL'"></mat-spinner>
 
-    <button mat-raised-button style="height: 100%" matTooltip="Open/Close view supported site" (click)="openSupportedSite()">Supported site</button>
+    <button mat-raised-button style="height: 100%" matTooltip="Open/Close view supported site" *ngIf="electron.mode !== 'READYTODOWNLOAD' && electron.mode !== 'DOWNLOAD'" (click)="openSupportedSite()">Supported site</button>
     <button mat-icon-button style="height: 100%;width: 52.06px" matTooltip="Open/Close parameter" (click)="openParameter()"><mat-icon>settings</mat-icon></button>
   </div>
 

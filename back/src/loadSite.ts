@@ -1,4 +1,4 @@
-import SiteManga from './../../models/siteModels';
+import { SiteManga } from './../../models/siteModels';
 import { existsSync, readdirSync } from 'fs';
 import { join } from 'path';
 

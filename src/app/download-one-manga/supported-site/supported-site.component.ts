@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ElectronCommuniquateService } from 'src/app/_helper/electron-communiquate.service';
 
 @Component({
   selector: 'app-supported-site',
@@ -9,12 +10,13 @@ export class SupportedSiteComponent implements OnInit {
 
   @Output() supportedSiteOpenEvent = new EventEmitter<void>();
 
-  constructor() { }
+  constructor(public electron: ElectronCommuniquateService) { }
 
   ngOnInit(): void {
   }
 
   openSupportedSite() {
+    console.log(this.electron.supportedSites)
     this.supportedSiteOpenEvent.emit()
   }
 

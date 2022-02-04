@@ -26,6 +26,8 @@ import { LoadingBarComponent } from './download-one-manga/loading-bar/loading-ba
 import { UrlBarComponent } from './download-one-manga/url-bar/url-bar.component';
 import { SupportedSiteComponent } from './download-one-manga/supported-site/supported-site.component';
 import { ParametersComponent } from './download-one-manga/parameters/parameters.component';
+import { URLValidatorDirective } from './_helper/urlvalidator.directive';
+import { InfoMangaComponent } from './download-one-manga/info-manga/info-manga.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { ParametersComponent } from './download-one-manga/parameters/parameters.
     LoadingBarComponent,
     UrlBarComponent,
     SupportedSiteComponent,
-    ParametersComponent
+    ParametersComponent,
+    URLValidatorDirective,
+    InfoMangaComponent
   ],
   imports: [
     BrowserModule,

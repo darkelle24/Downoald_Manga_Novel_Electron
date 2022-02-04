@@ -1,0 +1,18 @@
+<mat-card class="parameters">
+  <mat-card-title style="display: flex; flex-direction: row;flex-wrap: nowrap;align-items: center;justify-content: space-between;">
+    <span class="title">{{electron.infoManga.name}}</span>
+    <button mat-icon-button class="close-button" matTooltip="Close parameter" (click)="close()">
+      <mat-icon class="close-icon" color="warn">close</mat-icon>
+    </button>
+  </mat-card-title>
+  <mat-card-content style="display: flex; flex-direction: row;flex-wrap: nowrap;gap: 8px">
+    <img style="height: 250px;" [src]="electron.infoManga.iconUrl">
+    <div style="display: flex; flex-direction: column;flex-wrap: nowrap;gap: 13px">
+      <span><span class="info">Alternative Name:</span> {{electron.infoManga.alternativeName.join(', ')}}</span>
+      <span><span class="info">Status:</span> {{electron.infoManga.status}}</span>
+      <span><span class="info">Genre:</span> {{electron.infoManga.genre.join(', ')}}</span>
+      <span><span class="info">Authors:</span> {{electron.infoManga.authors.join(', ')}}</span>
+    </div>
+  </mat-card-content>
+</mat-card>
+

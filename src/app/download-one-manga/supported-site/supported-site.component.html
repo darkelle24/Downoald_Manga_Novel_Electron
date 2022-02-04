@@ -5,4 +5,11 @@
       <mat-icon class="close-icon" color="warn">close</mat-icon>
     </button>
   </mat-card-title>
+  <mat-card-subtitle>Supported site: {{electron.supportedSites.length}}</mat-card-subtitle>
+  <mat-card-content style="display: flex; flex-direction: column;flex-wrap: nowrap;gap: 8px; max-height: 100px; overflow: auto;">
+    <div *ngFor="let site of electron.supportedSites">
+      <span style="margin-right: 5%;">Name: {{site.name}} </span>
+      <span>Url: {{site.domaine.join(', ')}}</span>
+    </div>
+  </mat-card-content>
 </mat-card>

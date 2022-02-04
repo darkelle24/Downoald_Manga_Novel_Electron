@@ -1,6 +1,6 @@
 import { BrowserWindow } from "electron";
 import { join } from "path";
-import SiteManga from "../models/siteModels";
+import { SiteManga } from "../models/siteModels";
 import { startBack } from "./src/back";
 import { loadAllSite } from "./src/loadSite";
 
