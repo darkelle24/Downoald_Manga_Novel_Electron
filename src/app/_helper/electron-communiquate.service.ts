@@ -134,18 +134,22 @@ export class ElectronCommuniquateService {
       this.mode = ModeEnum.LOADURL
       this.clearInfoManga()
       this.clearInfoChapter()
+      let finshManga = false
+      let finishChapter = false
 
       this._ipc.once('infoManga', (_event: any, arg: any) => {
         console.log(arg)
         this.infoManga = arg
-        if (this.mode !== ModeEnum.READYTODOWNLOAD)
+        finshManga = true
+        if (finishChapter)
           this.mode = ModeEnum.READYTODOWNLOAD
       })
 
       this._ipc.once('infoChapter', (_event: any, arg: any) => {
         console.log(arg)
         this.infoChapter = arg
-        if (this.mode !== ModeEnum.READYTODOWNLOAD)
+        finishChapter = true
+        if (finshManga)
           this.mode = ModeEnum.READYTODOWNLOAD
       })
 

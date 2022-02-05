@@ -1,17 +1,17 @@
 <mat-accordion>
   <div style="height: 3px;"></div>
-  <ng-container *ngFor="let page of pages">
-    <mat-expansion-panel style="margin-left: 5px">
+  <cdk-virtual-scroll-viewport itemSize="50" style="height: 100%">
+    <mat-expansion-panel style="margin-left: 5px" *cdkVirtualFor="let page of chapters">
       <mat-expansion-panel-header>
-        <mat-panel-title>
-          Self aware panel
+        <mat-panel-title class="panel-title">
+          <span>Chapter  <span id="chapterNumber">{{page.chapterNumber}}</span> <span *ngIf="page.name !== undefined && page.name !== ''">: <span id="chapterTitle">{{page.name}}</span></span></span>
         </mat-panel-title>
-        <mat-panel-description>
+        <mat-panel-description class="panel-des">
           <app-chapter-header></app-chapter-header>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-chapter-contents></app-chapter-contents>
     </mat-expansion-panel>
-  </ng-container>
+  </cdk-virtual-scroll-viewport>
   <div style="height: 3px;"></div>
 </mat-accordion>

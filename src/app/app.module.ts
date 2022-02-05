@@ -16,7 +16,9 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 import { DownloadOneMangaComponent } from './download-one-manga/download-one-manga.component';
 import { ChaptersComponent } from './download-one-manga/chapters/chapters.component';
@@ -59,7 +61,8 @@ import { InfoMangaComponent } from './download-one-manga/info-manga/info-manga.c
     MatSlideToggleModule,
     MatTooltipModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

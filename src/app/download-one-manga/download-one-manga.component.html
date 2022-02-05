@@ -16,8 +16,8 @@
 
     <app-loading-bar></app-loading-bar>
 
-    <div class="download-page">
-      <app-chapters></app-chapters>
+    <div class="download-page" *ngIf="electron.mode === 'READYTODOWNLOAD' || electron.mode === 'DOWNLOAD'">
+      <app-chapters [chapters]="electron.infoChapter"></app-chapters>
     </div>
 
 </div>

@@ -20,7 +20,10 @@ export class DownloadOneMangaComponent implements OnInit, OnDestroy {
     this.sub = this.electron._mode.asObservable().subscribe({
       next: (value: ModeEnum) => {
         if (value === ModeEnum.READYTODOWNLOAD) {
-          this.openInfoManga()
+          if (!this.infoManga)
+            this.openInfoManga()
+        } else if (value !== ModeEnum.DOWNLOAD) {
+          this.infoManga = false
         }
       }
     })
