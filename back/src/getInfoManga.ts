@@ -26,12 +26,13 @@ export function getInfoManga(win: Electron.BrowserWindow, browser: puppeteer.Bro
 
       await Promise.all([
         Promise.resolve(site.getInfoManga(page)).then((value: any) => {
-          win.webContents.send('infoManga', value)
+          win.webContents.send('infoManga', { infoManga: value, infoSite: { domaine: site.domaine, name: site.name } })
         }),
         Promise.resolve(site.getAllUrlSingleChapter(page)).then((value: any) => {
           win.webContents.send('infoChapter', value)
         })
       ])
+      page.close()
     }
   })
 }

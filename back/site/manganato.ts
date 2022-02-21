@@ -5,7 +5,7 @@ export default class manganato extends SiteManga {
   domaine = ['https://manganato.com/', 'https://readmanganato.com/']
   name = 'manganato'
 
-  getAllImageFromUrl(pageOneChapter: Page): void {
+  getAllImageFromUrl(pageOneChapter: Page): Image[] {
 
   }
 

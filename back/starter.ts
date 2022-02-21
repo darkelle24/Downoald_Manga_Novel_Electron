@@ -1,3 +1,4 @@
+import { options } from './../models/optionModels';
 import { BrowserWindow } from "electron";
 import { join } from "path";
 import { SiteManga } from "../models/siteModels";
@@ -9,6 +10,7 @@ export abstract class Main {
   application: Electron.App;
   abstract siteFolderPath: string
   listSite: SiteManga[] = []
+  abstract options: options
 
   constructor(app: Electron.App) {
     this.application = app;

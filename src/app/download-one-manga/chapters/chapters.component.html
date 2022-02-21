@@ -1,17 +1,17 @@
 <mat-accordion>
-  <div style="height: 3px;"></div>
   <cdk-virtual-scroll-viewport itemSize="50" style="height: 100%">
-    <mat-expansion-panel style="margin-left: 5px" *cdkVirtualFor="let page of chapters">
+    <div style="height: 3px;"></div>
+    <mat-expansion-panel style="margin-left: 5px" *cdkVirtualFor="let chapter of chapters; trackBy: trackByFn" class="disabled-pointer" hideToggle>
       <mat-expansion-panel-header>
         <mat-panel-title class="panel-title">
-          <span>Chapter  <span id="chapterNumber">{{page.chapterNumber}}</span> <span *ngIf="page.name !== undefined && page.name !== ''">: <span id="chapterTitle">{{page.name}}</span></span></span>
+          <span>Chapter  <span id="chapterNumber">{{chapter.chapterNumber}}</span> <span *ngIf="chapter.name !== undefined && chapter.name !== ''">: <span id="chapterTitle">{{chapter.name}}</span></span></span>
         </mat-panel-title>
         <mat-panel-description class="panel-des">
-          <app-chapter-header></app-chapter-header>
+          <app-chapter-header [chapter]="chapter"></app-chapter-header>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-chapter-contents></app-chapter-contents>
+      <app-chapter-contents [chapter]="chapter"></app-chapter-contents>
     </mat-expansion-panel>
+    <div style="height: 3px;"></div>
   </cdk-virtual-scroll-viewport>
-  <div style="height: 3px;"></div>
 </mat-accordion>

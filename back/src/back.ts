@@ -5,6 +5,7 @@ import findChrome from 'chrome-finder'
 import { SiteManga } from "../../models/siteModels"
 import { getInfoManga } from './getInfoManga'
 import { closeAll } from './closeAll'
+import { download } from './download'
 
 async function openChrome(win: Electron.BrowserWindow, event?: Electron.IpcMainEvent, newPath?: string): Promise<puppeteer.Browser | undefined> {
   let chromePath = ''
@@ -35,8 +36,10 @@ async function openChrome(win: Electron.BrowserWindow, event?: Electron.IpcMainE
 }
 
 function initAll(win: Electron.BrowserWindow, browser: puppeteer.Browser | undefined, sites: SiteManga[]) {
-  if (browser)
+  if (browser) {
     getInfoManga(win, browser, sites)
+    download(win, browser, sites)
+  }
 }
 
 export function startBack(win: Electron.BrowserWindow, sites: SiteManga[]) {

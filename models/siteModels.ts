@@ -9,6 +9,10 @@ export type MangaInfo = {
   authors: string[]
 }
 
+export type Image = {
+  url: string
+}
+
 export type UrlOneChapter = {
   url: string,
   chapterNumber: number,
@@ -35,7 +39,7 @@ export abstract class SiteManga {
 
   abstract getAllUrlSingleChapter(pageAllChapter: Page): Promise<UrlOneChapter[]>
 
-  abstract getAllImageFromUrl(pageAllChapter: Page): void
+  abstract getAllImageFromUrl(pageOneChapter: Page): Promise<Image[]>
 
   abstract getInfoManga(pageAllChapter: Page): Promise<MangaInfo>
 }

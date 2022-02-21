@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { UrlOneChapterAngular } from 'src/app/_models/models';
 
 @Component({
   selector: 'app-chapter-contents',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chapter-contents.component.scss']
 })
 export class ChapterContentsComponent implements OnInit {
+
+  @Input() chapter!: UrlOneChapterAngular;
 
   constructor() { }
 

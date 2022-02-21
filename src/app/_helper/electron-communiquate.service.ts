@@ -3,6 +3,7 @@ import { IpcRenderer } from 'electron';
 import { ModeEnum } from './modeEnum';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { MangaInfo, SiteManga, UrlOneChapter } from 'models/siteModels';
+import { StatusEnum, UrlOneChapterAngular } from '../_models/models';
 
 @Injectable({
   providedIn: 'root'
@@ -48,15 +49,23 @@ export class ElectronCommuniquateService {
     return this._infoManga
   }
 
-  _infoChapter: UrlOneChapter[] = []
-  set infoChapter(info: UrlOneChapter[]) {
+  _infoChapter: UrlOneChapterAngular[] = []
+  set infoChapter(info: UrlOneChapterAngular[]) {
     this.zone.run(() => {
-      this._infoChapter = info
+      this._infoChapter = info.map((value: UrlOneChapter) => {
+        let toReturn: any = value
+
+        toReturn.pourcentage = 0
+        toReturn.status = StatusEnum.NOSTART
+        return toReturn
+      })
     })
   }
-  get infoChapter(): UrlOneChapter[] {
+  get infoChapter(): UrlOneChapterAngular[] {
     return this._infoChapter
   }
+
+  private infoSite: any
 
   constructor(public zone: NgZone) {
     if (window.require) {
@@ -109,6 +118,8 @@ export class ElectronCommuniquateService {
     ipc.on("startChrome", (_event: any, _arg: any) => {
       console.log("startChrome")
       this.mode = ModeEnum.WAITURL
+      //NORMAL
+      this.getInfoManga('https://readmanganato.com/manga-mu989777')
     })
   }
 
@@ -138,21 +149,26 @@ export class ElectronCommuniquateService {
       let finishChapter = false
 
       this._ipc.once('infoManga', (_event: any, arg: any) => {
-        console.log(arg)
-        this.infoManga = arg
+        this.infoManga = arg.infoManga
+        this.infoSite = arg.infoSite
         finshManga = true
         if (finishChapter)
           this.mode = ModeEnum.READYTODOWNLOAD
       })
 
       this._ipc.once('infoChapter', (_event: any, arg: any) => {
-        console.log(arg)
         this.infoChapter = arg
         finishChapter = true
         if (finshManga)
           this.mode = ModeEnum.READYTODOWNLOAD
       })
 
+    }
+  }
+
+  downloadManga() {
+    if (this._ipc) {
+      this._ipc.send('download', { list: this._infoChapter, infoSite: this.infoSite })
     }
   }
 }

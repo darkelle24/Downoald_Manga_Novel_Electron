@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { UrlOneChapter } from 'models/siteModels';
+import { StatusEnum, UrlOneChapterAngular } from 'src/app/_models/models';
 
 @Component({
   selector: 'app-chapters',
@@ -8,7 +10,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 })
 export class ChaptersComponent implements OnInit {
 
-  @Input() chapters: any[] = []
+  @Input() chapters!: UrlOneChapterAngular[];
 
   constructor() { }
 

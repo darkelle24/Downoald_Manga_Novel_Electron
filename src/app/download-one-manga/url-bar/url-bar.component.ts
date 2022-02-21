@@ -13,7 +13,6 @@ export class UrlBarComponent implements OnInit {
   @Output() parametersOpenEvent = new EventEmitter<void>();
   @Output() supportedSiteOpenEvent = new EventEmitter<void>();
   @Output() infoMangaOpenEvent = new EventEmitter<void>();
-
   url = ''
 
   constructor(public electron: ElectronCommuniquateService) {
@@ -54,7 +53,7 @@ export class UrlBarComponent implements OnInit {
   }
 
   download() {
-    console.log("To do")
+    this.electron.downloadManga()
   }
 
   openInfoManga() {

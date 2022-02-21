@@ -1,13 +1,21 @@
-<div style="display: flex;height: 100%;gap: 2%; align-items: center;">
-  <span>40%</span>
-  <mat-progress-bar value="40" class="progress-bar"></mat-progress-bar>
-  <div style="display: flex;align-items: center;">
-    <mat-icon style="color: green">done</mat-icon>
-    <span>20</span>
-  </div>
+<div style="display: flex;height: 100%;gap: 2%; align-items: center;justify-content: flex-end;">
 
-  <div style="display: flex;align-items: center;">
-    <mat-icon style="color: red">clear</mat-icon>
-    <span>20</span>
-  </div>
+  <ng-container *ngIf="chapter.status !== 'NOSTART'">
+    <span>{{chapter.pourcentage}}%</span>
+    <mat-progress-bar [value]="chapter.pourcentage" class="progress-bar"></mat-progress-bar>
+    <div style="display: flex;align-items: center;">
+      <mat-icon style="color: green">done</mat-icon>
+      <span>20</span>
+    </div>
+
+    <div style="display: flex;align-items: center;">
+      <mat-icon style="color: red">clear</mat-icon>
+      <span>20</span>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="chapter.status === 'NOSTART'">
+    <div>{{chapter.date | date:'d MMM, y'}}</div>
+  </ng-container>
+
 </div>
